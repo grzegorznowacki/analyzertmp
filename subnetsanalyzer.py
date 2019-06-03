@@ -15,7 +15,7 @@ class SubnetsAnalyzer(Analyzer):
         Analyzer.__init__(self)
 
     def query_for_ip_status(self, ip):
-        url = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip
+        url = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip + '/last'
         r = requests.get(url)
         return r.json()
 
