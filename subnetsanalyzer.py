@@ -6,7 +6,7 @@ from cortexutils.analyzer import Analyzer
 
 
 # CONFIG
-ENDPOINT_HOST = '127.0.0.1'
+ENDPOINT_HOST = '10.0.2.2'      # for virtualbox connection to localhost on host machine https://superuser.com/questions/144453/virtualbox-guest-os-accessing-local-server-on-host-oscurl 
 ENDPOINT_PORT = 1234
 
 
