@@ -6,7 +6,7 @@ from cortexutils.analyzer import Analyzer
 
 
 # CONFIG
-ENDPOINT_HOST = '10.0.2.2'      # for virtualbox connection to localhost on host machine https://superuser.com/questions/144453/virtualbox-guest-os-accessing-local-server-on-host-oscurl 
+ENDPOINT_HOST = '10.0.2.2'      # for virtualbox connection to localhost on host machine https://superuser.com/questions/144453/virtualbox-guest-os-accessing-local-server-on-host-oscurl
 ENDPOINT_PORT = 1234
 
 
@@ -15,9 +15,16 @@ class SubnetsAnalyzer(Analyzer):
         Analyzer.__init__(self)
 
     def query_for_ip_status(self, ip):
-        url = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip + '/last'
-        r = requests.get(url)
-        return r.json()
+        url_all = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip + '/all'
+        r = requests.get(url_all).json()
+        res = {}
+        if isinstance(r,(list,)):
+            res['status'] = r[0]['status']
+            res['last'] = r[0]
+            res['all'] = r
+        else:
+            res['status'] = r['status']
+        return res
 
     def result(self):
         if self.data_type == "ip":
