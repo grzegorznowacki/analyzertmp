@@ -1,10 +1,10 @@
 {
-  "name": "Subnets_Analyzer",
+  "name": "SubnetsAnalyzer",
   "version": "1.0",
   "author": "CERT-NASK",
   "url": "https://vcs.cert.pl/grzegorzno/subnetsanalyzer",
   "license": "AGPL-V3",
   "description": "Query for IP status (static/dynamic/undefined).",
   "dataTypeList": ["ip"],
-  "command": "Subnets_Analyzer/subnetsanalyzer.py"
+  "command": "SubnetsAnalyzer/subnetsanalyzer.py"
 }
