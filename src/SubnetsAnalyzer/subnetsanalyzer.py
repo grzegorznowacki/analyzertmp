@@ -16,7 +16,7 @@ class SubnetsAnalyzer(Analyzer):
 
     def summary(self, raw):
         taxonomies = []
-        taxonomies.append(self.build_taxonomy("info", "SubnetsAnalyzer", "Status", raw['status']))
+        taxonomies.append(self.build_taxonomy("info", "IP", "Status", raw['status']))
         return {"taxonomies": taxonomies}
 
     def query_for_ip_status(self, ip):
