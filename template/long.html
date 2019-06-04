@@ -1,0 +1,31 @@
+<div class="panel panel-info" ng-if="success">
+    <div class="panel-heading">
+        Summary for <strong>{{artifact.data}}</strong>
+    </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal" ng-if="content.status">
+        <dt>Status:</dt>
+        <dd>{{content.status}}</dd>
+      </dl>
+      <dl class="dl-horizontal" ng-if="content.last">
+          <dt>Analysis time:</dt>
+          <dd>{{content.last.timestamp}}</dd>
+      </dl>
+      <dl class="dl-horizontal" ng-if="content.all">
+        <dt>History:</dt>
+        <dd ng-repeat="item in content.all">
+          {{item.status}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.timestamp}}
+        </dd>
+      </dl>
+    </div>
+</div>
+
+<!-- General error -->
+<div class="panel panel-danger" ng-if="!success">
+    <div class="panel-heading">
+        <strong>{{(artifact.data}}</strong>
+    </div>
+    <div class="panel-body">
+        {{content.errorMessage}}
+    </div>
+</div>
