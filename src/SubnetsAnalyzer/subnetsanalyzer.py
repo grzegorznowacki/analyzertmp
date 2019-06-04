@@ -4,13 +4,6 @@
 import requests
 from cortexutils.analyzer import Analyzer
 
-# MUST BE EXECUTABLE !!! chmod +x
-# analyzer must be enabled in cortex
-# must restart hive to update analyzer info
-# must be running endpoint
-# add templates html
-# add labels - also to requirements hie4py
-# copy only files: reqirements.txt, SubnetsAnalzyer.json, subnetsanalyzer.py to /opt/Cortex-Analzyers/analyzers and html files to hive templates
 
 # CONFIG
 ENDPOINT_HOST = '10.0.2.2'      # for virtualbox connection to localhost on host machine https://superuser.com/questions/144453/virtualbox-guest-os-accessing-local-server-on-host-oscurl
@@ -20,6 +13,11 @@ ENDPOINT_PORT = 1234
 class SubnetsAnalyzer(Analyzer):
     def __init__(self):
         Analyzer.__init__(self)
+
+    def summary(self, raw):
+        taxonomies = []
+        taxonomies.append(self.build_taxonomy("info", "SubnetsAnalyzer", "Status", raw['status']))
+        return {"taxonomies": taxonomies}
 
     def query_for_ip_status(self, ip):
         url_all = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip + '/all'
@@ -36,7 +34,7 @@ class SubnetsAnalyzer(Analyzer):
     def result(self):
         if self.data_type == "ip":
             ip = self.get_data()
-            res = self.query_for_ip_status(ip)      
+            res = self.query_for_ip_status(ip)
             return res
         else:
             self.error("Wrong data type")
