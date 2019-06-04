@@ -18,7 +18,7 @@ class SubnetsAnalyzer(Analyzer):
         url_all = 'http://' + ENDPOINT_HOST + ':' + str(ENDPOINT_PORT) + '/' + ip + '/all'
         r = requests.get(url_all).json()
         res = {}
-        if isinstance(r,(list,)):
+        if isinstance(r,(list,)):      
             res['status'] = r[0]['status']
             res['last'] = r[0]
             res['all'] = r
