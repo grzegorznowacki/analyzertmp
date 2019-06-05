@@ -10,3 +10,10 @@
 - templaty w hivei trzeba importowac:
 In the event that the analyzer report templates are not imported in TheHive (only administrators can do such an operation via the Admin > Report Templates menu):
 import via thehive 
+
+
+for virtualbox connection to localhost on host machine https://superuser.com/questions/144453/virtualbox-guest-os-accessing-local-server-on-host-oscurl
+
+CONFIG
+ENDPOINT_HOST = '10.0.2.2'      
+ENDPOINT_PORT = 1234
