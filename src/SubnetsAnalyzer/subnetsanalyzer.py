@@ -25,7 +25,7 @@ class SubnetsAnalyzer(Analyzer):
         return {"taxonomies": taxonomies}
 
     def query_for_ip_status(self, ip):
-        url_all = 'http://' + self.host + ':' + self.port + '/' + ip + '/all'
+        url_all = 'http://' + self.host + ':' + str(self.port) + '/' + ip + '/all'
         r = requests.get(url_all).json()
         res = {}
         if isinstance(r,(list,)):      
